@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>10 Week English Program | 1.2.7 Asynchronous Homework</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f9f1ff',
+                            100: '#dbd0e2',
+                            200: '#c8b9d3',
+                            300: '#ad96bd',
+                            400: '#8968a0',
+                            500: '#8968a0',
+                            600: '#8968a0',
+                            700: '#8968a0',
+                            800: '#8968a0',
+                            900: '#2a2c2e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Custom Styles for Flipcards & Print formatting -->
+<style>
+        /* Helvetica is loaded from the user device or an appropriately licensed webfont. */
+        
+        body {
+            font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #2a2c2e;
+        }
+
+        /* Perspective for 3D flip card effect */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        /* Print Media Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            body {
+                background: white;
+                color: black;
+            }
+            .step-section {
+                display: block !important;
+                page-break-after: always;
+            }
+            .shadow-lg, .shadow-md, .shadow-sm {
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1;
+            }
+        }
+
+        .step-section {
+            display: none;
+        }
+
+        .step-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        :root { --subject: #8968a0; --subject-light: #dbd0e2; --ink: #2a2c2e; }
+        /* Master header: deep purple with light-purple controls */
+        .master-header { background:#8968a0 !important; color:#ffffff !important; }
+        .master-header h1 { color:#ffffff !important; }
+        .master-header .brand-badge { background:#dbd0e2 !important; color:#5c3978 !important; }
+        .master-header .header-meta { color:#e0cdf4 !important; }
+        .master-tabs { background:#dbd0e2 !important; border-color:#ad96bd !important; }
+        .master-tabs .nav-tab:not(.bg-brand-600) { color:#2a2c2e !important; }
+        .master-tabs .nav-tab:not(.bg-brand-600):hover { background:#c8b9d3 !important; color:#2a2c2e !important; }
+        .master-tabs .nav-tab.bg-brand-600 { background:#8968a0 !important; color:#fff !important; }
+        .master-header button.bg-brand-600 { background:#dbd0e2 !important; color:#5c3978 !important; }
+        .master-header button.bg-brand-600:hover { background:#c8b9d3 !important; }
+        .key-accuracy-rule { background:#f9f1ff !important; border-left-color:#8968a0 !important; color:#5c3978 !important; }
+
+        html { font-size: 16px; }
+        body, button, input, textarea, select { font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        button { font-size: 15px; font-weight: 600; }
+        main h2 { font-size: 28px; line-height: 1.25; font-weight: 700; }
+        main h3 { font-size: 22px; line-height: 1.3; font-weight: 600; }
+        main p { line-height: 1.6; }
+        main .text-xs { font-size: 14px; }
+        main .text-sm { font-size: 16px; }
+        main .text-base { font-size: 16px; }
+        main .text-lg { font-size: 18px; }
+        main input, main textarea, main select { background: #fff; color: #2a2c2e; font-size: 16px; }
+        main input:focus, main textarea:focus, main select:focus { outline: 2px solid var(--subject); outline-offset: 2px; }
+        .nav-tab { font-size: 14px; }
+        .nav-tab:focus-visible, button:focus-visible { outline: 3px solid #ad96bd; outline-offset: 2px; }
+        .master-bottom-nav { display:flex; align-items:center; justify-content:space-between; gap:16px; max-width:1152px; margin:0 auto 20px; padding:12px 20px; }
+        .master-bottom-nav button { background:var(--subject); color:white; padding:11px 20px; border-radius:9px; }
+        .master-bottom-nav button:disabled { background:#d9d9d9; color:#54595f; cursor:not-allowed; }
+        #section-progress-label { color:#e2e2e2; font-size:12px; margin-left:12px; white-space:nowrap; }
+        @media (max-width: 768px) { main h2 {font-size:25px;} main h3 {font-size:20px;} .master-bottom-nav {padding:12px;} }
+        @media print { .master-bottom-nav {display:none!important;} .step-section {break-after:auto;page-break-after:auto;} }
+    
+.homework-input{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:9px;margin:8px 0 12px} main .question{padding:16px;margin:12px 0;border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc}main .question label{display:block;margin:8px 0;cursor:pointer}main .question input[type=radio]{margin-right:8px;accent-color:#8968a0} main .feedback:not(.hide){padding:12px;margin:10px 0;background:#f8fafc;border-left:4px solid #8968a0;border-radius:6px;white-space:pre-line}main .hide{display:none!important}main .check{display:flex;gap:10px;align-items:flex-start;margin:9px 0}main .check input{margin-top:6px;accent-color:#8968a0}main textarea{width:100%;min-height:110px;padding:12px;border:1px solid #cbd5e1;border-radius:10px;margin:8px 0 14px}main .good{color:#166534}main .bad{color:#b91c1c}main .hint{background:#f9f1ff;border-left:4px solid #8968a0;padding:16px;border-radius:8px;margin:14px 0}main .homework-action{background:#8968a0;color:white;padding:11px 19px;border-radius:10px;margin:10px 8px 10px 0}main .homework-action:hover{background:#71558a}main details{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px;margin:12px 0}main details summary{cursor:pointer;font-weight:600}main .mini{font-size:14px}main .muted{color:#64748b}main .pill{display:inline-block;background:#dbd0e2;color:#5c3978;border-radius:30px;padding:5px 12px;font-weight:700;font-size:14px;margin-bottom:12px}main .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}main svg#familyScene{width:100%;max-height:350px}main .progress{height:9px;background:#e2e8f0;border-radius:30px;overflow:hidden;margin:10px 0}main .progress>div{height:100%;background:#8968a0;width:0;transition:width .3s}main a{color:#5c3978;text-decoration:underline}main input[type=text],main input[type=url]{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:9px}main fieldset{border:0;padding:0}main legend.hide{position:absolute;left:-9999px;display:block!important} @media print{main button.homework-action{display:none!important}}
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+<!-- TOP HEADER & NAVIGATION -->
+<header class="master-header text-white sticky top-0 z-50 shadow-md no-print">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Branding -->
+<div class="flex items-center space-x-3">
+<div class="brand-badge bg-[#dbd0e2] text-[#4b286d] font-bold p-2 rounded-lg text-sm tracking-wide">
+                        10W
+                    </div>
+<div>
+<h1 class="font-bold text-lg leading-tight">Lesson 1.2.7: Asynchronous Homework</h1>
+<p class="header-meta text-xs font-medium text-[#e0cdf4]">10 Week English Program · Day 2 · Asynchronous Homework · CEFR A2–B1 · 70 min</p>
+</div>
+</div>
+<!-- Print & Export Action -->
+<button class="flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white text-xs sm:text-sm font-semibold py-2 px-3 sm:px-4 rounded-lg transition-colors" onclick="window.print()">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="hidden sm:inline">Print / Save PDF</span>
+</button>
+</div>
+</div>
+<!-- Progress Bar -->
+<div aria-label="Lesson section progress" aria-valuemax="7" aria-valuemin="0" aria-valuenow="1" class="w-full bg-[#ad96bd] h-1.5" id="progress-track" role="progressbar">
+<div class="bg-brand-500 h-full transition-all duration-300" id="progress-bar" style="width:14.2857%"></div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="master-tabs bg-[#dbd0e2] border-t border-[#ad96bd] overflow-x-auto">
+<div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 flex space-x-1 sm:space-x-2 py-2 text-xs sm:text-sm whitespace-nowrap"><button class="nav-tab px-3 py-1.5 rounded-md font-medium text-white bg-brand-600" id="tab-0" onclick="switchStep(0)">Overview</button><button class="nav-tab px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white hover:bg-slate-700" id="tab-1" onclick="switchStep(1)">1. Speaking (15m)</button><button class="nav-tab px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white hover:bg-slate-700" id="tab-2" onclick="switchStep(2)">2. Grammar (15m)</button><button class="nav-tab px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white hover:bg-slate-700" id="tab-3" onclick="switchStep(3)">3. Writing (10m)</button><button class="nav-tab px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white hover:bg-slate-700" id="tab-4" onclick="switchStep(4)">4. Listening (15m)</button><button class="nav-tab px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white hover:bg-slate-700" id="tab-5" onclick="switchStep(5)">5. Problem Solving (10m)</button><button class="nav-tab px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white hover:bg-slate-700" id="tab-6" onclick="switchStep(6)">6. Reflection (5m)</button></div>
+</nav>
+</header>
+<!-- MAIN CONTAINER -->
+<main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+<!-- STEP 0: OVERVIEW & OBJECTIVES -->
+<!-- STEP 1: WARM-UP -->
+<!-- STEP 2: VOCABULARY LAB -->
+<!-- STEP 3: CONTROLLED PRACTICE -->
+<!-- STEP 4: DIALOGUE ANALYSIS -->
+<!-- STEP 5: SPEAKING SIMULATOR -->
+<!-- STEP 6: FINAL CHALLENGE & REPORT -->
+<section class="step-section active" id="step-0"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 mb-6"><div class="flex flex-wrap items-center justify-between gap-4 mb-6"><div><span class="inline-block bg-brand-100 text-brand-800 text-xs px-3 py-1 rounded-full font-semibold uppercase tracking-wide">LESSON 1.2.7 OVERVIEW</span><h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Making Plans &amp; Solving Problems</h2></div><div class="text-right"><span class="text-sm text-slate-500 block">Total Duration</span><span class="text-xl font-bold text-slate-800">70 Minutes</span></div></div><p class="text-slate-600 leading-relaxed mb-6">Welcome to your Day 2 independent learning lab. Plan an event, distinguish future arrangements from decisions, write practical messages, listen to a change of plans, and respond professionally to unexpected problems. Complete each check and submit your work following your trainer’s instructions.</p><div class="grid md:grid-cols-3 gap-4 mb-8"><div class="p-4 bg-slate-50 rounded-xl border border-slate-200"><div class="text-brand-600 font-bold mb-2">01 · Communicate plans</div><p>Use event vocabulary, time expressions and clear invitations.</p></div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200"><div class="text-brand-600 font-bold mb-2">02 · Choose future forms</div><p>Distinguish fixed arrangements from decisions, offers and predictions.</p></div><div class="p-4 bg-slate-50 rounded-xl border border-slate-200"><div class="text-brand-600 font-bold mb-2">03 · Solve problems</div><p>Respond to changes with useful, professional language.</p></div></div><h3 class="mb-4">Lesson Roadmap</h3><div class="overflow-x-auto rounded-xl border border-slate-200 mb-6"><table class="w-full text-left"><thead class="bg-slate-100"><tr><th class="p-3">Stage</th><th class="p-3">Focus Area</th><th class="p-3">Time</th><th class="p-3">Activity Output</th></tr></thead><tbody class="divide-y divide-slate-200"><tr><td class="p-3">1</td><td class="p-3">Speaking</td><td class="p-3">15 min</td><td class="p-3">Vocaroo voice message</td></tr><tr><td class="p-3">2</td><td class="p-3">Grammar</td><td class="p-3">15 min</td><td class="p-3">12 checked answers</td></tr><tr><td class="p-3">3</td><td class="p-3">Writing</td><td class="p-3">10 min</td><td class="p-3">Invitation + update</td></tr><tr><td class="p-3">4</td><td class="p-3">Listening &amp; Shadowing</td><td class="p-3">15 min</td><td class="p-3">8 answers + practice</td></tr><tr><td class="p-3">5</td><td class="p-3">Problem-solving</td><td class="p-3">10 min</td><td class="p-3">2 scenarios + response</td></tr><tr><td class="p-3">6</td><td class="p-3">Self-assessment</td><td class="p-3">5 min</td><td class="p-3">Submission summary</td></tr></tbody></table></div><div class="hint"><strong>Before you start</strong><p>Your trainer will provide the listening audio for Activity 4. For Activity 1, use <a href="https://vocaroo.com/" rel="noopener noreferrer" target="_blank">Vocaroo</a> to record and share your voice message. No student account is required for this website.</p></div><button class="homework-action" onclick="switchStep(1)">Start Lesson →</button></div></section><section class="step-section" id="step-1"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 mb-6"><span class="pill">01 · Speaking · 15 min</span><h2>Let's Plan an Event!</h2><p>Imagine you're sending a <strong>2–3-minute voice message</strong> to a friend or teammate about an upcoming celebration. Explain the event, where and when it is happening, whom you are inviting, and how you will handle one possible problem.</p><details><summary>Planning prompts and useful expressions</summary><ul class="list-disc pl-6 mt-2 space-y-2"><li>What are you celebrating? Where and when are you meeting?</li><li>Who are you inviting? How will they contact you?</li><li>What are you doing before, during and after the event?</li><li>What if the food arrives late or the venue changes?</li></ul><p class="mt-3"><strong>Useful phrases:</strong> “We're meeting on Saturday.” · “Before the party...” · “There's a problem.” · “I've got it! I'll call...”</p></details><div class="hint"><strong>Record using Vocaroo</strong><p>Open <a href="https://vocaroo.com/" rel="noopener noreferrer" target="_blank">Vocaroo ↗</a>, record your message, listen to it, and paste the share link below. Submit your recording according to your trainer’s instructions and designated platform.</p></div><label for="vocaroo"><strong>Your Vocaroo sharing link</strong></label><input class="homework-input" id="vocaroo" placeholder="https://voca.ro/..." type="url"/><h3>Speaking checklist</h3><div id="speakChecks"></div><button class="homework-action" onclick="checkSpeaking()">Check speaking requirements</button><div aria-live="polite" class="feedback hide" id="speakFeedback"></div><div class="mt-8 flex justify-between"><button class="text-slate-500 hover:text-slate-700 font-medium text-sm" onclick="switchStep(0)">← Back</button><button class="text-brand-600 hover:text-brand-800 font-bold text-sm" onclick="switchStep(2)">Next Section →</button></div></div></section><section class="step-section" id="step-2"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 mb-6"><span class="pill">02 · Grammar · 15 min</span><h2>Future Plans or Decisions?</h2><p>Use <strong>Present Progressive</strong> for arranged future events, and <strong>will</strong> for decisions made now, offers, promises and predictions. Answer all 12 questions, then check your work. You may retry.</p><div class="hint"><strong>Quick reminder</strong><p><em>We're meeting at 6 p.m. tomorrow</em> = an arrangement. <em>The room is unavailable? I'll find another one</em> = a decision made now.</p></div><div id="grammarQuestions"></div><button class="homework-action" onclick="checkGrammar()">Check all 12 answers</button><div aria-live="polite" class="feedback hide" id="grammarFeedback"></div><div class="mt-8 flex justify-between"><button class="text-slate-500 hover:text-slate-700 font-medium text-sm" onclick="switchStep(1)">← Back</button><button class="text-brand-600 hover:text-brand-800 font-bold text-sm" onclick="switchStep(3)">Next Section →</button></div></div></section><section class="step-section" id="step-3"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 mb-6"><span class="pill">03 · Writing · 10 min</span><h2>Write an Invitation &amp; Handle a Change</h2><p><strong>Part A:</strong> Write a short email or message inviting a coworker or friend to a celebration. Include the event, date, time, location and how to reply. Aim for <strong>50–80 words</strong>.</p><label for="invitation"><strong>Your invitation</strong></label><textarea id="invitation" placeholder="Hi Alex, I'm inviting you to..."></textarea><p><strong>Part B:</strong> The original venue is suddenly unavailable. Write a <strong>30–60-word</strong> update explaining the issue, the next step and how you will confirm the new location.</p><label for="updateMsg"><strong>Your change-of-plans message</strong></label><textarea id="updateMsg" placeholder="Hi everyone, there's a problem with..."></textarea><div class="muted mini" id="writingCount"></div><h3>Writing checklist</h3><div id="writingChecks"></div><button class="homework-action" onclick="checkWriting()">Check writing requirements</button><div aria-live="polite" class="feedback hide" id="writingFeedback"></div><details id="writingExamples"><summary>Compare with model messages after writing</summary><p><strong>Invitation:</strong> Hi Maya! We're having a small team celebration next Friday at 6 p.m. at the community center. We're bringing food and playing games. Would you like to join us? Please reply to this message by Wednesday so we can plan the food. I hope you can come!</p><p><strong>Update:</strong> Hi everyone! There's a problem with the community center, so we can't use the room on Friday. I've got an idea! I'll contact another venue this afternoon. I'll email the new address as soon as it's confirmed. Thanks for your patience!</p></details><div class="mt-8 flex justify-between"><button class="text-slate-500 hover:text-slate-700 font-medium text-sm" onclick="switchStep(2)">← Back</button><button class="text-brand-600 hover:text-brand-800 font-bold text-sm" onclick="switchStep(4)">Next Section →</button></div></div></section><section class="step-section" id="step-4"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 mb-6"><span class="pill">04 · Listening &amp; Pronunciation · 15 min</span><h2>Listen &amp; Shadow: A Change of Plans</h2><div class="hint"><strong>Audio provided by your trainer</strong><p>Your trainer will share an audio recording with you through the designated platform. Make sure you have received it before starting. The audio is not embedded here.</p></div><h3>Part A · Listen and understand</h3><p>Listen once for the main idea. Listen again and answer the eight questions. Check your answers <strong>before</strong> revealing the transcript.</p><div id="listenQuestions"></div><button class="homework-action" onclick="checkListening()">Check listening answers</button><div aria-live="polite" class="feedback hide" id="listenFeedback"></div><div class="hide" id="afterListen"><h3>Part B · Read the transcript</h3><details><summary>Reveal the conversation transcript</summary><div class="space-y-2 mt-3"><p><strong>Maya:</strong> Hey, Daniel! Are we still having our team celebration on Friday?</p><p><strong>Daniel:</strong> Yes! We're meeting at the community center at six. I've already invited everyone.</p><p><strong>Maya:</strong> That's great! Are you bringing the decorations?</p><p><strong>Daniel:</strong> I am, but there's a problem. The community center just called. The room isn't available anymore.</p><p><strong>Maya:</strong> Oh, no! We don't have much time to find another place.</p><p><strong>Daniel:</strong> I know. We're running late with the preparations.</p><p><strong>Maya:</strong> Wait, I've got it! My neighbor has a small event space. I'll call her and ask if it's available.</p><p><strong>Daniel:</strong> That's a great idea! I'll send everyone an email once we confirm the new address.</p><p><strong>Maya:</strong> Perfect. We're meeting tomorrow afternoon to finish planning, right?</p><p><strong>Daniel:</strong> Exactly. And don't worry, I think everything will work out!</p><p><strong>Maya:</strong> I hope so! See you tomorrow.</p></div></details><h3>Part C · Shadowing</h3><p>Replay the recording and repeat each sentence, paying attention to rhythm, connected speech and intonation. Check each phrase after practicing it aloud.</p><div id="shadowChecks"></div><button class="homework-action" onclick="checkShadow()">Complete listening &amp; shadowing</button><div aria-live="polite" class="feedback hide" id="shadowFeedback"></div></div><div class="mt-8 flex justify-between"><button class="text-slate-500 hover:text-slate-700 font-medium text-sm" onclick="switchStep(3)">← Back</button><button class="text-brand-600 hover:text-brand-800 font-bold text-sm" onclick="switchStep(5)">Next Section →</button></div></div></section><section class="step-section" id="step-5"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 mb-6"><span class="pill">05 · Problem-solving · 10 min</span><h2>Problem-Solving Challenge</h2><p>Choose the best response in each BPO-oriented situation. Then write a short professional message of your own.</p><div id="problemQuestions"></div><label for="problemResponse"><strong>Your response:</strong> A customer is waiting for a promised update, but the system is still unavailable. Write <strong>2–3 sentences</strong> acknowledging the issue, offering a next step and communicating clearly without making an unrealistic promise.</label><textarea id="problemResponse" placeholder="I'm sorry for the delay. ..."></textarea><div id="problemChecks"></div><button class="homework-action" onclick="checkProblems()">Check problem-solving activity</button><div aria-live="polite" class="feedback hide" id="problemFeedback"></div><details><summary>See a model response after writing</summary><p>I'm sorry, but we're having a system issue, and I can't access your update yet. I'll contact the support team and let you know what information is available as soon as I have it. Thank you for your patience.</p></details><div class="mt-8 flex justify-between"><button class="text-slate-500 hover:text-slate-700 font-medium text-sm" onclick="switchStep(4)">← Back</button><button class="text-brand-600 hover:text-brand-800 font-bold text-sm" onclick="switchStep(6)">Next Section →</button></div></div></section><section class="step-section" id="step-6"><div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 mb-6"><span class="pill">06 · Self-Assessment · 5 min</span><h2>My Day 2 Progress</h2><p>Choose the confidence level that best describes your current skills. This reflection is not graded.</p><div id="reflectionQuestions"></div><button class="homework-action" onclick="checkReflection()">Complete self-assessment</button><div aria-live="polite" class="feedback hide" id="reflectionFeedback"></div><hr class="my-8 border-slate-200"/><h2>Homework Submission Summary</h2><div class="progress"><div id="bar"></div></div><p class="muted" id="count">0 of 6 sections completed</p><p id="summaryStatus">Complete the activities to see your progress.</p><div id="summaryScores"></div><div class="hint"><strong>Submitting your homework</strong><p>Copy or download the summary. Share your Vocaroo link and any requested written work according to your trainer's instructions and designated platform. Automatically checked scores are for practice; the trainer reviews speaking and open-ended writing.</p></div><div class="row"><button class="homework-action" onclick="copySummary()">Copy submission summary</button><button class="homework-action" onclick="downloadSummary()">Download summary (.txt)</button></div><div aria-live="polite" class="muted mini" id="copyFeedback"></div><div class="mt-8 flex justify-between"><button class="text-slate-500 hover:text-slate-700 font-medium text-sm" onclick="switchStep(5)">← Back</button></div></div></section></main>
+<!-- Master bottom navigation: available on every lesson screen -->
+<div aria-label="Lesson navigation" class="master-bottom-nav no-print">
+<button disabled="" id="previous-section" onclick="switchStep(currentStep-1)" type="button">← Back</button>
+<span id="bottom-section-label" style="color:#54595f;font-size:14px;font-weight:500">Overview · 1 of 7</span>
+<button id="next-section" onclick="switchStep(currentStep+1)" type="button">Next →</button>
+</div>
+<!-- FOOTER -->
+<footer class="bg-[#2a2c2e] border-t border-[#54595f] text-slate-400 text-xs py-6 text-center no-print mt-auto">
+<div class="max-w-7xl mx-auto px-4">
+<p>10 Week English Program | Lesson 1.1.7: Asynchronous Homework (CEFR A2–B1)</p>
+<p class="text-slate-500 text-[10px] mt-1">Independent learning · 70 minutes · Trainer-guided audio distribution</p>
+</div>
+</footer>
+<!-- JAVASCRIPT LOGIC -->
+<script>
+        let currentStep = 0;
+        function switchStep(stepIndex) {
+            if (stepIndex < 0 || stepIndex > 6) return;
+            currentStep = stepIndex;
+            const steps = document.querySelectorAll('.step-section');
+            const tabs = document.querySelectorAll('.nav-tab');
+
+            steps.forEach((step, idx) => {
+                if (idx === stepIndex) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+
+            tabs.forEach((tab, idx) => {
+                if (idx === stepIndex) {
+                    tab.classList.remove('text-slate-300', 'hover:bg-slate-700');
+                    tab.classList.add('text-white', 'bg-brand-600');
+                    tab.setAttribute('aria-current', 'step');
+                } else {
+                    tab.classList.remove('text-white', 'bg-brand-600');
+                    tab.classList.add('text-slate-300', 'hover:bg-slate-700');
+                    tab.removeAttribute('aria-current');
+                }
+            });
+
+            // Update Progress Bar
+            const progress = ((stepIndex + 1) / steps.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('progress-track').setAttribute('aria-valuenow', String(stepIndex+1));
+            document.getElementById('previous-section').disabled = stepIndex === 0;
+            document.getElementById('next-section').disabled = stepIndex === steps.length-1;
+            document.getElementById('next-section').textContent = stepIndex === steps.length-1 ? 'Completed ✓' : 'Next →';
+            const sectionName = tabs[stepIndex].textContent.trim();
+            document.getElementById('bottom-section-label').textContent = `${sectionName} · ${stepIndex+1} of ${steps.length}`;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+
+
+
+const KEY='10w_1_2_7_master_v1';const $=id=>document.getElementById(id);
+let completed={speaking:false,grammar:false,writing:false,listening:false,problems:false,reflection:false};let scores={};let attemptedListening=false;
+const grammar=[
+{q:'We ___ our new team leader tomorrow at 10 a.m. (confirmed appointment)',o:['meet','are meeting','will meet'],a:1,e:'A confirmed arrangement uses Present Progressive.'},
+{q:'The customer needs help. I ___ call my supervisor now.',o:['am calling','will','calling'],a:1,e:'A decision made at the moment of speaking uses will.'},
+{q:'I think the event ___ be successful.',o:['is being','will','is'],a:1,e:'Will can express a prediction.'},
+{q:'They ___ dinner with the neighbors on Saturday. They booked a table.',o:['are having','will have','have'],a:0,e:'A specific arrangement already organized uses Present Progressive.'},
+{q:'The decorations are heavy. I ___ help you carry them.',o:['am helping','will','helping'],a:1,e:'An offer made now uses will.'},
+{q:'What time ___ you meeting the event organizer tomorrow?',o:['will','do','are'],a:2,e:'Present Progressive question: are + subject + verb-ing.'},
+{q:'Correct the sentence: We will meeting at six tomorrow. (confirmed arrangement)',a:['we are meeting at six tomorrow','we are meeting at 6 tomorrow','we are meeting at 6 pm tomorrow','we are meeting at six pm tomorrow'],e:'Use are meeting for a confirmed arrangement, not will meeting.'},
+{q:'Correct the sentence: I will to call the venue now.',a:['i will call the venue now','ill call the venue now'],e:'Will is followed by the base verb without to.'},
+{q:'Correct the sentence: She are visiting her neighbors on Friday.',a:['she is visiting her neighbors on friday','shes visiting her neighbors on friday'],e:'She takes is in the Present Progressive.'},
+{q:'Complete: We ___ (meet) the manager tomorrow at 3 p.m. (arranged)',a:['are meeting',"'re meeting"],e:'Present Progressive expresses a planned arrangement.'},
+{q:'Complete: The phone is ringing. I ___ (answer) it.',a:['will answer',"'ll answer"],e:'A spontaneous decision uses will + base verb.'},
+{q:'Complete: I think the guests ___ (enjoy) the celebration.',a:['will enjoy',"'ll enjoy"],e:'A prediction uses will + base verb.'}];
+const listening=[
+{q:'What are Maya and Daniel planning?',o:['A job interview','A team celebration','A family vacation'],a:1,e:'They are organizing a team celebration.'},
+{q:'When is the celebration planned?',o:['Friday at six','Saturday at noon','Tomorrow morning'],a:0,e:'Daniel says Friday at six.'},
+{q:'What problem happens?',o:['The invitations are lost','The room is unavailable','The food is too expensive'],a:1,e:'The community center cannot provide the room.'},
+{q:'How do they feel about the preparation time?',o:['They have plenty of time','They are running late','They already finished'],a:1,e:'Daniel says they are running late.'},
+{q:'What idea does Maya have?',o:['Cancel the event','Use her neighbor’s event space','Meet online'],a:1,e:'Her neighbor has a small event space.'},
+{q:'What does Maya decide to do?',o:['Call her neighbor','Buy decorations','Send everyone an email'],a:0,e:'She says, “I’ll call her.”'},
+{q:'What will Daniel send once they confirm the venue?',o:['A text about food','An email with the new address','A new invitation to another event'],a:1,e:'He will email the new address.'},
+{q:'When are they meeting to finish planning?',o:['Friday night','Tomorrow afternoon','Next week'],a:1,e:'Maya confirms their meeting tomorrow afternoon.'}];
+const problems=[
+{q:'A customer is waiting while the system is taking too long. What is the best response?',o:["It's not my problem. You'll have to wait.","I'm sorry for the delay. We're experiencing a system issue. I'll check what options are available.","Everything will definitely be fixed in one minute."],a:1,e:'Acknowledge the issue, explain it briefly and offer a realistic next step.'},
+{q:'A team meeting has been moved to a new time. What should you do?',o:["Ignore the change because everyone should already know.","We're meeting at the original time no matter what.","There's been a schedule change. I'll send the updated time and confirm everyone has received it."],a:2,e:'Communicate the change clearly and confirm the information was received.'}];
+const speakItems=['I included at least three event vocabulary words.','I used at least two time or event expressions.','I described at least two arranged future actions with Present Progressive.','I used will for a decision or offer made now.','I described a possible problem and a solution.','I listened to my 2–3-minute recording before sharing.'];
+const writingItems=['My invitation names the event, date, time and location.','My invitation explains how to respond or confirm attendance.','My update explains the problem clearly.','My update includes a realistic next step or solution.','I checked my grammar, spelling and professional tone.'];
+const shadowItems=['“We’re meeting at the community center at six.”','“There’s a problem.”','“We’re running late with the preparations.”','“I’ve got it! I’ll call her.”','“I’ll send everyone an email once we confirm the new address.”'];
+const reflectionItems=['I can describe confirmed future arrangements.','I can use will for decisions, offers and predictions.','I can write an invitation with clear event details.','I can understand a short conversation about changing plans.','I can respond professionally when something goes wrong.'];
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function norm(s){return String(s).toLowerCase().replace(/’/g,"'").replace(/[^a-z0-9' ]/g,'').replace(/\s+/g,' ').trim()}
+function renderChoice(id,items){$(id).innerHTML=items.map((q,i)=>`<div class="question"><p><strong>${i+1}.</strong> ${escapeHTML(q.q)}</p><fieldset><legend class="sr-only">Question ${i+1}</legend>${q.o.map((o,j)=>`<label><input type="radio" name="${id}_${i}" value="${j}"> ${escapeHTML(o)}</label>`).join('')}</fieldset><div class="feedback hide" id="fb_${id}_${i}" aria-live="polite"></div></div>`).join('')}
+function renderChecks(id,items,prefix){$(id).innerHTML=items.map((x,i)=>`<label class="check"><input type="checkbox" id="${prefix}${i}"><span>${escapeHTML(x)}</span></label>`).join('')}
+function allChecks(prefix,n){return Array.from({length:n},(_,i)=>$(prefix+i).checked).every(Boolean)}
+function chosen(name){const el=document.querySelector(`input[name="${name}"]:checked`);return el?Number(el.value):null}
+function words(t){return t.trim()?t.trim().split(/\s+/).length:0}
+function sentences(t){return (t.match(/[^.!?\n]+[.!?]+|[^.!?\n]+$/gm)||[]).filter(x=>x.trim().length>3).length}
+function setDone(k,v,score){completed[k]=v;if(score!==undefined)scores[k]=score;save();refresh()}
+function build(){renderChoice('listenQuestions',listening);renderChoice('problemQuestions',problems);$('grammarQuestions').innerHTML=grammar.map((q,i)=>`<div class="question"><p><strong>${i+1}.</strong> ${escapeHTML(q.q)}</p>${q.o?q.o.map((o,j)=>`<label><input type="radio" name="g_${i}" value="${j}"> ${escapeHTML(o)}</label>`).join(''):`<input type="text" id="g_${i}" aria-label="Answer to grammar question ${i+1}" placeholder="Type your complete correction or missing words">`}<div class="feedback hide" id="fg_${i}" aria-live="polite"></div></div>`).join('');renderChecks('speakChecks',speakItems,'sp');renderChecks('writingChecks',writingItems,'wr');renderChecks('shadowChecks',shadowItems,'sh');renderChecks('problemChecks',['My response acknowledges the customer’s issue.','My response offers a realistic next step without guaranteeing a specific resolution.'],'pr');$('reflectionQuestions').innerHTML=reflectionItems.map((x,i)=>`<div class="question"><p>${escapeHTML(x)}</p><div class="row">${['Not yet','Getting there','Confident'].map((v,j)=>`<label><input type="radio" name="r_${i}" value="${j+1}"> ${v}</label>`).join('')}</div></div>`).join('')}
+function checkSpeaking(){let url=$('vocaroo').value.trim(),valid=false;try{const u=new URL(url);valid=u.protocol==='https:'&&['voca.ro','www.voca.ro','vocaroo.com','www.vocaroo.com'].includes(u.hostname)&&u.pathname.length>1}catch{}const checks=allChecks('sp',speakItems.length);$('speakFeedback').classList.remove('hide');$('speakFeedback').textContent=`${valid?'✓ Vocaroo link format accepted.':'Add a valid Vocaroo sharing link.'}\n${checks?'✓ All speaking criteria confirmed.':'Complete the six speaking checks.'}\nYour trainer will review the recording itself.`;setDone('speaking',valid&&checks)}
+function checkGrammar(){let score=0,missing=0;grammar.forEach((q,i)=>{let v=q.o?chosen('g_'+i):$('g_'+i).value;let ok=q.o?v===q.a:q.a.some(a=>norm(v)===norm(a));if(v===null||String(v).trim()==='')missing++;if(ok)score++;let f=$('fg_'+i);f.classList.remove('hide');f.innerHTML=`<strong class="${ok?'good':'bad'}">${ok?'Correct':'Review'}</strong> · ${escapeHTML(q.e)}${ok?'':`<br>Expected: ${escapeHTML(q.o?q.o[q.a]:q.a[0])}`}`});$('grammarFeedback').classList.remove('hide');$('grammarFeedback').textContent=`${score}/12 correct. ${missing} unanswered. Review the explanations and retry if needed.`;setDone('grammar',missing===0,score+'/12')}
+function writingStats(){let a=words($('invitation').value),b=words($('updateMsg').value);$('writingCount').textContent=`Invitation: ${a} words (target 50–80) · Update: ${b} words (target 30–60)`;return {a,b}}
+function checkWriting(){let x=writingStats(),ok=x.a>=50&&x.a<=80&&x.b>=30&&x.b<=60&&allChecks('wr',writingItems.length);$('writingFeedback').classList.remove('hide');$('writingFeedback').textContent=`${x.a>=50&&x.a<=80?'✓':'•'} Invitation target: 50–80 words.\n${x.b>=30&&x.b<=60?'✓':'•'} Update target: 30–60 words.\n${allChecks('wr',writingItems.length)?'✓':'•'} All writing checklist items confirmed.\nThis self-check does not automatically evaluate grammar, accuracy or clarity; your trainer can review the writing.`;setDone('writing',ok)}
+function checkListening(){let score=0,missing=0;listening.forEach((q,i)=>{let v=chosen('listenQuestions_'+i),ok=v===q.a;if(v===null)missing++;if(ok)score++;let f=$('fb_listenQuestions_'+i);f.classList.remove('hide');f.innerHTML=`<strong class="${ok?'good':'bad'}">${ok?'Correct':'Review'}</strong> · ${escapeHTML(q.e)}`});$('listenFeedback').classList.remove('hide');$('listenFeedback').textContent=`${score}/8 correct. ${missing} unanswered. The transcript is now available for review and shadowing.`;$('afterListen').classList.remove('hide');attemptedListening=true;scores.listening=score+'/8';completed.listening=missing===0&&allChecks('sh',shadowItems.length);save();refresh()}
+function checkShadow(){let all=allChecks('sh',shadowItems.length),answered=listening.every((_,i)=>chosen('listenQuestions_'+i)!==null);$('shadowFeedback').classList.remove('hide');$('shadowFeedback').textContent=all?'✓ Shadowing checklist completed. Your trainer can review your pronunciation if requested.':'Practice all five phrases and check each one.';setDone('listening',attemptedListening&&all&&answered)}
+function checkProblems(){let score=0,missing=0;problems.forEach((q,i)=>{let v=chosen('problemQuestions_'+i),ok=v===q.a;if(v===null)missing++;if(ok)score++;let f=$('fb_problemQuestions_'+i);f.classList.remove('hide');f.innerHTML=`<strong class="${ok?'good':'bad'}">${ok?'Correct':'Review'}</strong> · ${escapeHTML(q.e)}`});let enough=sentences($('problemResponse').value)>=2&&sentences($('problemResponse').value)<=3;let checks=allChecks('pr',2);$('problemFeedback').classList.remove('hide');$('problemFeedback').textContent=`${score}/2 scenario answers correct. ${enough?'✓ 2–3 sentences provided.':'Write 2–3 complete sentences.'} ${checks?'✓ Checklist complete.':'Complete the two response checks.'} Your trainer may review the written response.`;setDone('problems',missing===0&&enough&&checks,score+'/2')}
+function checkReflection(){let missing=reflectionItems.filter((_,i)=>chosen('r_'+i)===null).length;$('reflectionFeedback').classList.remove('hide');$('reflectionFeedback').textContent=missing?`Choose a confidence level for ${missing} more statement(s).`:'✓ Self-assessment complete. Review skills you marked “Not yet” or “Getting there.”';setDone('reflection',missing===0)}
+function refresh(){let n=Object.values(completed).filter(Boolean).length;$('count').textContent=`${n} of 6 sections completed`;$('bar').style.width=(n/6*100)+'%';$('summaryStatus').textContent=`${n}/6 sections complete${n===6?' · Ready to submit!':''}`;$('summaryScores').innerHTML=`<p><strong>Grammar:</strong> ${escapeHTML(scores.grammar||'Not checked')} · <strong>Listening:</strong> ${escapeHTML(scores.listening||'Not checked')} · <strong>Problem-solving:</strong> ${escapeHTML(scores.problems||'Not checked')}</p><p><strong>Vocaroo:</strong> ${completed.speaking?'Link format and self-check complete':'Pending'}</p>`}
+function summaryText(){return `10 Week English Program · Day 2 Asynchronous Homework (1.2.7)\nCompletion: ${Object.values(completed).filter(Boolean).length}/6 sections\nGrammar: ${scores.grammar||'Not checked'}\nListening: ${scores.listening||'Not checked'}\nProblem-solving: ${scores.problems||'Not checked'}\nVocaroo: ${$('vocaroo').value.trim()||'Not provided'}\n\nInvitation:\n${$('invitation').value.trim()||'Not provided'}\n\nChange-of-plans update:\n${$('updateMsg').value.trim()||'Not provided'}\n\nCustomer response:\n${$('problemResponse').value.trim()||'Not provided'}\n\nSubmit according to your trainer's instructions and designated platform.`}
+async function copySummary(){try{await navigator.clipboard.writeText(summaryText());$('copyFeedback').textContent='Summary copied!'}catch{$('copyFeedback').textContent='Clipboard unavailable here. Use Download summary instead.'}}
+function downloadSummary(){let b=new Blob([summaryText()],{type:'text/plain;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='Day_2_Homework_Submission.txt';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+function save(){try{let fields={};document.querySelectorAll('input,textarea').forEach((e,i)=>fields[i]=e.type==='radio'||e.type==='checkbox'?e.checked:e.value);localStorage.setItem(KEY,JSON.stringify({fields,completed,scores,attemptedListening}))}catch{}}
+function restore(){try{let d=JSON.parse(localStorage.getItem(KEY)||'null');if(!d)return;completed={...completed,...d.completed};scores=d.scores||{};attemptedListening=!!d.attemptedListening;document.querySelectorAll('input,textarea').forEach((e,i)=>{let v=d.fields?.[i];if(v===undefined)return;if(e.type==='radio'||e.type==='checkbox')e.checked=!!v;else e.value=v});if(attemptedListening)$('afterListen').classList.remove('hide')}catch{}}
+build();restore();writingStats();refresh();document.addEventListener('input',e=>{if(e.target.id==='invitation'||e.target.id==='updateMsg')writingStats();save()});document.addEventListener('change',save);
+</script>
+</body>
+</html>
